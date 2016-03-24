@@ -17,6 +17,7 @@ public class RealTile extends TileTemplate {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	@Override
 	public void setPawn(Pawn pawn) {
@@ -27,7 +28,7 @@ public class RealTile extends TileTemplate {
 	@Override
 	public Pawn getPawn() {
 		// TODO Auto-generated method stub
-		return null;
+		return null;2
 	}
 
 	@Override
