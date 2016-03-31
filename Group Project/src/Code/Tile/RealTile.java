@@ -1,46 +1,37 @@
 package Code.Tile;
 
+import path.Path;
+import pawn.Pawn;
+
 public class RealTile extends TileTemplate {
 	
-	public RealTile(Pawn pawn, Token token, Path path){
-		//figure out how we're representing each of these
+	private Pawn _pawn;
+	private Path _path;
+	
+	public RealTile(Pawn pawn, Path path){
+		_pawn = pawn;
+		_path = path;
 	}
 
 	@Override
 	public void setPath(Path path) {
-		// TODO Auto-generated method stub
-		
+		_path = path;
 	}
 
 	@Override
 	public Path getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return _path;
 	}
 	
 
 	@Override
 	public void setPawn(Pawn pawn) {
-		// TODO Auto-generated method stub
-		
+		_pawn = pawn;
 	}
 
 	@Override
 	public Pawn getPawn() {
-		// TODO Auto-generated method stub
-		return null;2
+		return _pawn;
 	}
-
-	@Override
-	public void setToken(Token token) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Token getToken() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
