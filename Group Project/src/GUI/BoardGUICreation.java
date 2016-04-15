@@ -128,13 +128,13 @@ public class BoardGUICreation {
 		c.insets = new Insets(0,80,0,0);
 		pane.add(movementClockwiseButton, c);
 		
-		JButton movementCounterClockwiseButton = new JButton("Rotate Counter-Clockwise");
+/*		JButton movementCounterClockwiseButton = new JButton("Rotate Counter-Clockwise");
 		c.gridx = 16;
 		c.gridy = 1;
 		c.ipady = 75;
 		c.ipadx = 85;
 		c.insets = new Insets(0,0,0,0);
-		pane.add(movementCounterClockwiseButton, c);
+		pane.add(movementCounterClockwiseButton, c);*/
 		
 		JButton nextTilePlaced = new JButton("Next Tile Here");
 		c.gridx = 15;
