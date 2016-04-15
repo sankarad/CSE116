@@ -1,6 +1,7 @@
 package path;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PathCollections {
 	private ArrayList<Path> _list;
@@ -10,9 +11,9 @@ public class PathCollections {
 		makePathList();
 	}
 	
-	public void makePathList() {
+	public void makePathList() { /* this makes a list of all the different available paths and randomizes them**/
 		Path p = new Path(false,false,false,false);
-		for(int i=0; i<13; i++) {
+		for(int i=0; i<15; i++) {
 			p = p.randomizePath(p.makeCornerPath());
 			_list.add(p);
 		}
@@ -24,6 +25,7 @@ public class PathCollections {
 			p = p.randomizePath(p.makeTPath());
 			_list.add(p);
 		}
+		Collections.shuffle(_list);
 	}
 	
 	public ArrayList<Path> getList() {

@@ -10,8 +10,8 @@ public class Path {
 	private boolean _right;
 	private Random _r;
 	
-	public Path(boolean top, boolean bottom, boolean left, boolean right) {
-		_top = top;
+	public Path(boolean top, boolean bottom, boolean left, boolean right) { //can simplify this to take one parameter and use ifs
+	 	_top = top;
 		_bottom = bottom;
 		_left = left;
 		_right = right;
@@ -93,5 +93,30 @@ public class Path {
 			path = rotate(path);
 		}
 		return path;
+	}
+	
+	public int typeOfPath(Path path) { //returns an int that will be used to tell what tile image to use
+		if(_top == false && _bottom == false && _left == true && _right == true) {
+			return 0;//horizontal Straight
+		}else if(_top == true && _bottom == true && _left == false && _right == false) {
+			return 1;//vertical Straight
+		}else if(_top == true && _bottom == false && _left == false && _right == true) {
+			return 2;//top/right corner
+		}else if(_top == false && _bottom == true && _left == false && _right == true) {
+			return 3;//right/bottom corner
+		}else if(_top == false && _bottom == true && _left == true && _right == false) {
+			return 4;//bottom/left corner
+		}else if(_top == true && _bottom == false && _left == true && _right == false) {
+			return 5;//left/top corner
+		}else if(_top == true && _bottom == false && _left == true && _right == true) {
+			return 6;//Left/Top/Right Tee
+		}else if(_top == true && _bottom == true && _left == false && _right == true) {
+			return 7;//top/right/bottom Tee
+		}else if(_top == false && _bottom == true && _left == true && _right == true) {
+			return 8;//left/bottom/right Tee
+		}else {
+			return 9;//bottom/left/top Tee
+		}
+
 	}
 }
