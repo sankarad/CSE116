@@ -9,10 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import board.Board;
+
 
 
 public class BoardGUICreation {
+	private Board _board = new Board();
 
+	
 	static JFrame board=new JFrame("Labyrinth Game");
 	static JButton[][] buttons;
 	
@@ -128,6 +132,12 @@ public class BoardGUICreation {
 		c.insets = new Insets(0,80,0,0);
 		pane.add(movementClockwiseButton, c);
 		
+
+		movementClockwiseButton.addActionListener(new ClockwiseEventHandler(_board,_board.GetLeftover()));
+				
+			
+				
+		
 /*		JButton movementCounterClockwiseButton = new JButton("Rotate Counter-Clockwise");
 		c.gridx = 16;
 		c.gridy = 1;
@@ -201,5 +211,8 @@ public class BoardGUICreation {
 	
 
 	}
+
+
+
 	
 
