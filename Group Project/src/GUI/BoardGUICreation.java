@@ -11,6 +11,12 @@ import javax.swing.JPanel;
 
 import board.Board;
 
+/*@author Clayton, Edward
+ * BoardGUICreation creates the GUI behind the playing board. It creates a 7x7 array of buttons to display as well as buttons for 
+ * shifting the board when it is a player's turn. It also has a rotate clockwise button so the player can rotate the new piece before
+ * placing it on the board. There are also buttons to end the player's turn and to pick up a token on the board.
+ * It also has space to display the scores and player names. The board is organized using GridBagConstraints. 
+ */
 
 
 public class BoardGUICreation {
@@ -203,7 +209,10 @@ public class BoardGUICreation {
 		
 		
 	}
-
+/*
+ * main makes a new Board GUI
+ * 
+ */
 	public static void main(String[] args) {
 		new BoardGUICreation(); //makes new Board
 	}
