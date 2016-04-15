@@ -8,6 +8,7 @@ public abstract class TileTemplate {
 	public abstract Path getPath();
 	public abstract void setPawn(Pawn pawn);
 	public abstract Pawn getPawn();
+	public abstract void removePawn();
 //	public abstract void setIngredient(Ingredient ingredient);
 //	public abstract Ingredient getIngredient(); 
 }

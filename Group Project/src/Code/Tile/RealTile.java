@@ -33,5 +33,10 @@ public class RealTile extends TileTemplate {
 	public Pawn getPawn() {
 		return _pawn;
 	}
+
+	@Override
+	public void removePawn() {
+		setPawn(null);
+	}
 	
 }
