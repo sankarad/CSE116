@@ -7,10 +7,12 @@ public class RealTile extends TileTemplate {
 	
 	private Pawn _pawn;
 	private Path _path;
+	private Ingredient _ingredient;
 	
-	public RealTile(Pawn pawn, Path path){
+	public RealTile(Pawn pawn, Path path, Ingredient ingredient){
 		_pawn = pawn;
 		_path = path;
+		_ingredient = ingredient;
 	}
 
 	@Override
@@ -37,6 +39,17 @@ public class RealTile extends TileTemplate {
 	@Override
 	public void removePawn() {
 		setPawn(null);
+	}
+
+	@Override
+	public void setIngredient(Ingredient ingredient) {
+		_ingredient = ingredient;
+		
+	}
+
+	@Override
+	public Ingredient getIngredient() {
+		return _ingredient;
 	}
 	
 }

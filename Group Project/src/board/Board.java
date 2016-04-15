@@ -1,9 +1,8 @@
 
 package board;
 
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 
 import Code.Tile.RealTile;
 import path.Path;
@@ -17,38 +16,52 @@ public class Board {
 	private PathCollections _pColl;
 	private RealTile _leftover;
 	private RealTile[][] _board; 
-	private Pawn _pawn;
 	private int _activePawnX;
 	private int _activePawnY;
 	
 	public Board() {
+		_pColl = new PathCollections();
 		initializeBoard(_board);
 		populateBoard();
-		_pColl = new PathCollections();
+		placeIngredients();
 	}
 	
 	public void initializeBoard(RealTile[][] board) { //call this method to make the default board
-		board = new RealTile[][]{ {/** */new RealTile(null, new Path(false,true,false,true)), /** */null, /** */new RealTile(null, new Path(false,true,true,true)), /** */null, /** */new RealTile(null, new Path(false,true,true,true)), /** */null, /** */new RealTile(null, new Path(false,true,true,false))},                                                                   
+		board = new RealTile[][]{ {/** */new RealTile(null, new Path(false,true,false,true),null), /** */null, /** */new RealTile(null, new Path(false,true,true,true),null), /** */null, /** */new RealTile(null, new Path(false,true,true,true),null), /** */null, /** */new RealTile(null, new Path(false,true,true,false),null)},                                                                   
 				   {/** */null, /** */null, /** */null, /** */null, /** */null},
-				   {/** */new RealTile(null, new Path(true,true,false,true)), /** */null, /** */new RealTile(new Pawn("r",2,2), new Path(true,true,false,true)), /** */null, /** */new RealTile(new Pawn("y",4,2), new Path(false,true,true,true)), /** */null, /** */new RealTile(null, new Path(true,true,true,false))},
+				   {/** */new RealTile(null, new Path(true,true,false,true),null), /** */null, /** */new RealTile(new Pawn("r",2,2), new Path(true,true,false,true),null), /** */null, /** */new RealTile(new Pawn("y",4,2), new Path(false,true,true,true),null), /** */null, /** */new RealTile(null, new Path(true,true,true,false),null)},
 				   {/** */null, /** */null, /** */null, /** */null, /** */null},
-				   {/** */new RealTile(null, new Path(true,true,false,true)), /** */null, /** */new RealTile(new Pawn("w",2,4), new Path(true,false,true,true)), /** */null, /** */new RealTile(new Pawn("b",4,4), new Path(true,true,true,false)), /** */null, /** */new RealTile(null, new Path(true,true,true,false))},
+				   {/** */new RealTile(null, new Path(true,true,false,true),null), /** */null, /** */new RealTile(new Pawn("w",2,4), new Path(true,false,true,true),null), /** */null, /** */new RealTile(new Pawn("b",4,4), new Path(true,true,true,false),null), /** */null, /** */new RealTile(null, new Path(true,true,true,false),null)},
 				   {/** */null, /** */null, /** */null, /** */null, /** */null},
-				   {/** */new RealTile(null, new Path(true,false,false,true)), /** */null, /** */new RealTile(null, new Path(true,false,true,true)), /** */null, /** */new RealTile(null, new Path(true,false,true,true)), /** */null, /** */new RealTile(null, new Path(true,false,true,false))},
+				   {/** */new RealTile(null, new Path(true,false,false,true),null), /** */null, /** */new RealTile(null, new Path(true,false,true,true),null), /** */null, /** */new RealTile(null, new Path(true,false,true,true),null), /** */null, /** */new RealTile(null, new Path(true,false,true,false),null)},
 };
 	}
 		
 	public void populateBoard() {
-		ArrayList<Path> pList = _pColl.getList();
+		//ArrayList<Path> pList = _pColl.getList();
 		for(int col=0; col<COLS; col++) {
 			for(int row=0; row<ROWS; row++) {
 				if(_board[col][row] == null) {
-					_board[row][col] = new RealTile(null, pList.get(0));
-					pList.remove(0); //hope this works if not cry, it should use the first value the remove it, shifting the rest
+					_board[row][col] = new RealTile(null, _pColl.getList().get(0),null);
+					_pColl.getList().remove(0); //hope this works if not cry, it should use the first value the remove it, shifting the rest
 			} 
 		  }
 	   }
-		_leftover = new RealTile(null,pList.get(0)); //assign leftover to the leftover randomized tile.
+		_leftover = new RealTile(null,_pColl.getList().get(0),null); //assign leftover to the leftover randomized tile.
+	}
+	
+	public void placeIngredients() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i=1; i<27; i++){
+			list.add(i);
+		}
+		Collections.shuffle(list);
+		for(int y=1; y<6; y++) {
+			for(int x=1; x<6; x++) {
+				_board[x][y].getIngredient().setNum(list.get(0));
+				list.remove(0);
+			}
+		}
 	}
 	
 	public void findPlayer(String s) {
