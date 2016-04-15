@@ -9,10 +9,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import board.Board;
+
+/*@author Clayton, Edward
+ * BoardGUICreation creates the GUI behind the playing board. It creates a 7x7 array of buttons to display as well as buttons for 
+ * shifting the board when it is a player's turn. It also has a rotate clockwise button so the player can rotate the new piece before
+ * placing it on the board. There are also buttons to end the player's turn and to pick up a token on the board.
+ * It also has space to display the scores and player names. The board is organized using GridBagConstraints. 
+ */
 
 
 public class BoardGUICreation {
+	private Board _board = new Board();
 
+	
 	static JFrame board=new JFrame("Labyrinth Game");
 	static JButton[][] buttons;
 	
@@ -128,13 +138,19 @@ public class BoardGUICreation {
 		c.insets = new Insets(0,80,0,0);
 		pane.add(movementClockwiseButton, c);
 		
-		JButton movementCounterClockwiseButton = new JButton("Rotate Counter-Clockwise");
+
+		movementClockwiseButton.addActionListener(new ClockwiseEventHandler(_board,_board.GetLeftover()));
+				
+			
+				
+		
+/*		JButton movementCounterClockwiseButton = new JButton("Rotate Counter-Clockwise");
 		c.gridx = 16;
 		c.gridy = 1;
 		c.ipady = 75;
 		c.ipadx = 85;
 		c.insets = new Insets(0,0,0,0);
-		pane.add(movementCounterClockwiseButton, c);
+		pane.add(movementCounterClockwiseButton, c);*/
 		
 		JButton nextTilePlaced = new JButton("Next Tile Here");
 		c.gridx = 15;
@@ -193,7 +209,10 @@ public class BoardGUICreation {
 		
 		
 	}
-
+/*
+ * main makes a new Board GUI
+ * 
+ */
 	public static void main(String[] args) {
 		new BoardGUICreation(); //makes new Board
 	}
@@ -201,5 +220,8 @@ public class BoardGUICreation {
 	
 
 	}
+
+
+
 	
 

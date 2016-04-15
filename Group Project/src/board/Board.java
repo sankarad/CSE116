@@ -123,6 +123,11 @@ public class Board {
     public void ShiftBoard(int x, int y){
     	
     }
+    
+    public RealTile GetLeftover(){
+		return _leftover;
+    	
+    }
 }
 
 
