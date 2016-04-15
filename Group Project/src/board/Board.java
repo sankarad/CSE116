@@ -107,10 +107,147 @@ public class Board {
     	}
     }
     
-    public void ShiftBoard(int x, int y){
+    public void ShiftBoardR(){// Moves to the end of the row and the does process backwards
+    	int x=1;
+    	RealTile temp;
+    	temp=_board[x][6];
+    	for(int i=6; i>1 ; i=i-1)
+    	{
+    		_board[x][i]= _board[x][i-1];
+    	}
+    	_board[1][0]=_leftover;
+    	_leftover=temp;
     	
     }
-    
+    public void ShiftBoardR1(){// Moves to the end of the row and the does process backwards
+    	int x=3;
+    	RealTile temp;
+    	temp=_board[x][6];
+    	for(int i=6; i>1 ; i=i-1)
+    	{
+    		_board[x][i]= _board[x][i-1];
+    	}
+    	_board[3][0]=_leftover;
+    	_leftover=temp;
+    	
+    }
+    public void ShiftBoardR2(){// Moves to the end of the row and the does process backwards
+    	int x=5;
+    	RealTile temp;
+    	temp=_board[x][6];
+    	for(int i=6; i>1 ; i=i-1)
+    	{
+    		_board[x][i]= _board[x][i-1];
+    	}
+    	_board[5][0]=_leftover;
+    	_leftover=temp;
+    	
+    }
+    public void ShiftBoardL(){// Moves to the end of the row and the does process backwards
+    	int x=1;
+    	RealTile temp;
+    	temp=_board[x][0];
+    	for(int i=1; i<6 ; i++)
+    	{
+    		_board[x][i]= _board[x][i+1];
+    	}
+    	_board[x][6]=_leftover;
+    	_leftover=temp;
+    }
+    public void ShiftBoardL1(){// Moves to the end of the row and the does process backwards
+    	int x=3;
+    	RealTile temp;
+    	temp=_board[x][0];
+    	for(int i=1; i<6 ; i++)
+    	{
+    		_board[x][i]= _board[x][i+1];
+    	}
+    	_board[x][6]=_leftover;
+    	_leftover=temp;
+    }
+    public void ShiftBoardL2(){// Moves to the end of the row and the does process backwards
+    	int x=5;
+    	RealTile temp;
+    	temp=_board[x][0];
+    	for(int i=1; i<6 ; i++)
+    	{
+    		_board[x][i]= _board[x][i+1];
+    	}
+    	_board[x][6]=_leftover;
+    	_leftover=temp;
+    }
+
+    public void ShiftBoardD(){// Moves to the end of the column and the does process backwards
+    	int y=1;
+    	RealTile temp;
+    	temp=_board[6][y];
+    	for(int i=6; i>1 ; i=i-1)
+    	{
+    		_board[i][y]= _board[i-1][y];
+    	}
+    	_board[0][y]=_leftover;
+    	_leftover=temp;
+    	
+    }
+    public void ShiftBoardD1(){// Moves to the end of the column and the does process backwards
+    	int y=3;
+    	RealTile temp;
+    	temp=_board[6][y];
+    	for(int i=6; i>1 ; i=i-1)
+    	{
+    		_board[i][y]= _board[i-1][y];
+    	}
+    	_board[0][y]=_leftover;
+    	_leftover=temp;
+    	
+    }
+    public void ShiftBoardD2(){// Moves to the end of the column and the does process backwards
+    	int y=5;
+    	RealTile temp;
+    	temp=_board[6][y];
+    	for(int i=6; i>1 ; i=i-1)
+    	{
+    		_board[i][y]= _board[i-1][y];
+    	}
+    	_board[0][y]=_leftover;
+    	_leftover=temp;
+    }
+    public void ShiftBoardUp(){// Moves to the end of the column and the does process backwards
+    	int y=1;
+    	RealTile temp;
+    	temp=_board[0][y];
+    	for(int i=1; i<6 ; i++)
+    	{
+    		_board[i][y]= _board[i+1][y];
+    	}
+    	_board[6][y]=_leftover;
+    	_leftover=temp;
+    	
+    }
+    public void ShiftBoardUp1(){// Moves to the end of the column and the does process backwards
+    	int y=3;
+    	RealTile temp;
+    	temp=_board[0][y];
+    	for(int i=1; i<6 ; i++)
+    	{
+    		_board[i][y]= _board[i+1][y];
+    	}
+    	_board[6][y]=_leftover;
+    	_leftover=temp;
+    	
+    }
+    public void ShiftBoardUp2(){// Moves to the end of the column and the does process backwards
+    	int y=5;
+    	RealTile temp;
+    	temp=_board[0][y];
+    	for(int i=1; i<6 ; i++)
+    	{
+    		_board[i][y]= _board[i+1][y];
+    	}
+    	_board[6][y]=_leftover;
+    	_leftover=temp;
+    	
+    }
     public RealTile GetLeftover(){
 		return _leftover;
     	
