@@ -26,6 +26,8 @@ public class Board {
 };
 	private int _activePawnX;
 	private int _activePawnY;
+	private int _startPawnX;
+	private int _startPawnY;
 	
 	public Board() {
 		_pColl = new PathCollections();
@@ -73,7 +75,10 @@ public class Board {
 	}
 	
 	public void pickUpIngredient() {
-		
+		if(_board[_activePawnX][_activePawnY].getIngredient() != null) {
+		//	player1Score +=_board[_activePawnX][_activePawnY].getIngredient().getNum();
+			//when we make the players have a score attached to them
+		}
 	}
 	
 	public void findPlayer(String s) {
@@ -101,6 +106,7 @@ public class Board {
     	if(direction == 87) { //up
     		if(_board[_activePawnX][_activePawnY-1].getPath().isBottomOpen()){ //check if the path at pos. is true
     		_board[_activePawnX][_activePawnY-1].setPawn(_board[_activePawnX][_activePawnY].getPawn()); // change to the new pawn if true
+    		_board[_activePawnX][_activePawnY].getPawn().addPawn(_board[_activePawnX][_activePawnY].getPawn());
     		_board[_activePawnX][_activePawnY].removePawn();//set Pawn equal to zero
     		_activePawnX = _board[_activePawnX][_activePawnY-1].getPawn().getX(); //change the x and y to the new tile pawn pos.
     		_activePawnY = _board[_activePawnX][_activePawnY-1].getPawn().getY();
@@ -109,6 +115,7 @@ public class Board {
     	if(direction == 65) { //left
     		if(_board[_activePawnX-1][_activePawnY].getPath().isBottomOpen()){
     		_board[_activePawnX-1][_activePawnY].setPawn(_board[_activePawnX][_activePawnY].getPawn());
+    		_board[_activePawnX][_activePawnY].getPawn().addPawn(_board[_activePawnX][_activePawnY].getPawn());
     		_board[_activePawnX][_activePawnY].removePawn();
     		_activePawnX = _board[_activePawnX-1][_activePawnY].getPawn().getX(); //change the x and y to the new tile pawn pos.
     		_activePawnY = _board[_activePawnX-1][_activePawnY].getPawn().getY();
@@ -117,6 +124,7 @@ public class Board {
     	if(direction == 83) { //down
     		if(_board[_activePawnX][_activePawnY+1].getPath().isBottomOpen()){
     		_board[_activePawnX][_activePawnY-1].setPawn(_board[_activePawnX][_activePawnY].getPawn());
+    		_board[_activePawnX][_activePawnY].getPawn().addPawn(_board[_activePawnX][_activePawnY].getPawn());
     		_board[_activePawnX][_activePawnY].removePawn();
     		_activePawnX = _board[_activePawnX][_activePawnY+1].getPawn().getX(); //change the x and y to the new tile pawn pos.
     		_activePawnY = _board[_activePawnX][_activePawnY+1].getPawn().getY();
@@ -125,6 +133,7 @@ public class Board {
     	if(direction == 68) { //right
     		if(_board[_activePawnX+1][_activePawnY].getPath().isBottomOpen()){
     		_board[_activePawnX+1][_activePawnY].setPawn(_board[_activePawnX][_activePawnY].getPawn());
+    		_board[_activePawnX][_activePawnY].getPawn().addPawn(_board[_activePawnX][_activePawnY].getPawn());
     		_board[_activePawnX][_activePawnY].removePawn();
     		_activePawnX = _board[_activePawnX+1][_activePawnY].getPawn().getX(); //change the x and y to the new tile pawn pos.
     		_activePawnY = _board[_activePawnX+1][_activePawnY].getPawn().getY();
