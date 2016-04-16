@@ -72,6 +72,10 @@ public class Board {
 		}
 	}
 	
+	public void pickUpIngredient() {
+		
+	}
+	
 	public void findPlayer(String s) {
 		for(int y=0; y<COLS; y++) {
 			for(int x=0; x<ROWS; x++) {
@@ -131,10 +135,10 @@ public class Board {
     public void ShiftBoardR(){// Moves to the end of the row and the does process backwards
     	int x=1;
     	RealTile temp;
-    	temp=_board[x][6];
+    	temp=_board[x][1];
     	for(int i=6; i>1 ; i=i-1)
     	{
-    		_board[x][i]= _board[x][i-1];
+    		_board[i][1]= _board[x][i-1];
     	}
     	_board[1][0]=_leftover;
     	_leftover=temp;
