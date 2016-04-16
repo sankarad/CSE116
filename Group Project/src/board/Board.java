@@ -9,7 +9,11 @@ import Code.Tile.RealTile;
 import path.Path;
 import path.PathCollections;
 import pawn.Pawn;
-
+/*@author Edward, Sankara
+ * The Board class contains methods which create, randomise and place ingredients as well
+ * as contains methods which shift the specific rows of the progam. The Class contains a 
+ * method which controls the movement of the pawn.
+ */
 public class Board {
 	
 	private int COLS = 7;
@@ -57,7 +61,9 @@ public class Board {
 	   }
 		_leftover = new RealTile(null,_pColl.getList().get(0),null); //assign leftover to the leftover randomized tile.
 	}
-	
+	/* placeIngredients
+	 * Places the ingredients on the Board and displays the locations
+	 */
 	public void placeIngredients() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(int i=1; i<27; i++){
@@ -75,7 +81,11 @@ public class Board {
 	public void pickUpIngredient() {
 		
 	}
-	
+	/*findPlayer
+	 * Traverses the ArrayList of the Board to 
+	 * check the location of the player or players.
+	 * 
+	 */
 	public void findPlayer(String s) {
 		for(int y=0; y<COLS; y++) {
 			for(int x=0; x<ROWS; x++) {
@@ -96,7 +106,11 @@ public class Board {
 			}
 		}
 	}
-    
+    /*
+     * movePawn
+     * Moves the players in the specified direction using the keys
+     * W,A,S and D or Up, Left, Down, Right.
+     */
     public void movePawn(int direction) {
     	if(direction == 87) { //up
     		if(_board[_activePawnX][_activePawnY-1].getPath().isBottomOpen()){ //check if the path at pos. is true
@@ -131,7 +145,10 @@ public class Board {
     		}
     	}
     }
-    
+    /*ShiftBoardR
+     * Shifts the Board to the right on the specified space.
+     * 
+     */
     public void ShiftBoardR(){// Moves to the end of the row and the does process backwards
     	int x=1;
     	RealTile temp;
@@ -144,6 +161,10 @@ public class Board {
     	_leftover=temp;
     	
     }
+    /*ShiftBoardR
+     * Shifts the Board to the right on the specified space.
+     * 
+     */
     public void ShiftBoardR1(){// Moves to the end of the row and the does process backwards
     	int x=3;
     	RealTile temp;
@@ -156,6 +177,10 @@ public class Board {
     	_leftover=temp;
     	
     }
+    /*ShiftBoardR
+     * Shifts the Board to the right on the specified space.
+     * 
+     */
     public void ShiftBoardR2(){// Moves to the end of the row and the does process backwards
     	int x=5;
     	RealTile temp;
@@ -168,6 +193,10 @@ public class Board {
     	_leftover=temp;
     	
     }
+    /*ShiftBoardL
+     * Shifts the Board to the left on the specified space.
+     * 
+     */
     public void ShiftBoardL(){// Moves to the end of the row and the does process backwards
     	int x=1;
     	RealTile temp;
@@ -179,6 +208,10 @@ public class Board {
     	_board[x][6]=_leftover;
     	_leftover=temp;
     }
+    /*ShiftBoardL1
+     * Shifts the Board to the left on the specified space.
+     * 
+     */
     public void ShiftBoardL1(){// Moves to the end of the row and the does process backwards
     	int x=3;
     	RealTile temp;
@@ -190,6 +223,10 @@ public class Board {
     	_board[x][6]=_leftover;
     	_leftover=temp;
     }
+    /*ShiftBoardL2
+     * Shifts the Board to the left on the specified space.
+     * 
+     */
     public void ShiftBoardL2(){// Moves to the end of the row and the does process backwards
     	int x=5;
     	RealTile temp;
@@ -201,7 +238,10 @@ public class Board {
     	_board[x][6]=_leftover;
     	_leftover=temp;
     }
-
+    /*ShiftBoardD
+     * Shifts the Board to the down on the specified space.
+     * 
+     */
     public void ShiftBoardD(){// Moves to the end of the column and the does process backwards
     	int y=1;
     	RealTile temp;
@@ -214,6 +254,10 @@ public class Board {
     	_leftover=temp;
     	
     }
+    /*ShiftBoardD1
+     * Shifts the Board to the down on the specified space.
+     * 
+     */
     public void ShiftBoardD1(){// Moves to the end of the column and the does process backwards
     	int y=3;
     	RealTile temp;
@@ -226,6 +270,10 @@ public class Board {
     	_leftover=temp;
     	
     }
+    /*ShiftBoardD1
+     * Shifts the Board to the down on the specified space.
+     * 
+     */
     public void ShiftBoardD2(){// Moves to the end of the column and the does process backwards
     	int y=5;
     	RealTile temp;
@@ -237,6 +285,10 @@ public class Board {
     	_board[0][y]=_leftover;
     	_leftover=temp;
     }
+    /*ShiftBoardUp
+     * Shifts the Board to the Up on the specified space.
+     * 
+     */
     public void ShiftBoardUp(){// Moves to the end of the column and the does process backwards
     	int y=1;
     	RealTile temp;
@@ -249,6 +301,10 @@ public class Board {
     	_leftover=temp;
     	
     }
+    /*ShiftBoardUp1
+     * Shifts the Board to the Up on the specified space.
+     * 
+     */
     public void ShiftBoardUp1(){// Moves to the end of the column and the does process backwards
     	int y=3;
     	RealTile temp;
@@ -261,6 +317,10 @@ public class Board {
     	_leftover=temp;
     	
     }
+    /*ShiftBoardUp2
+     * Shifts the Board to the Up on the specified space.
+     * 
+     */
     public void ShiftBoardUp2(){// Moves to the end of the column and the does process backwards
     	int y=5;
     	RealTile temp;
