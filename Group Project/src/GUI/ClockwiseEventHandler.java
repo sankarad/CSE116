@@ -20,8 +20,6 @@ public ClockwiseEventHandler(Board b, RealTile p){
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
 		_p.setPath(_p.getPath().rotate(_p.getPath()));
 	}
 

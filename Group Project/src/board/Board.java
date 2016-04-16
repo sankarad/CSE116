@@ -4,6 +4,7 @@ package board;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import Code.Tile.Ingredient;
 import Code.Tile.RealTile;
 import path.Path;
 import path.PathCollections;
@@ -15,13 +16,20 @@ public class Board {
 	private int ROWS = COLS;
 	private PathCollections _pColl;
 	private RealTile _leftover;
-	private RealTile[][] _board; 
+	private RealTile[][] _board = { {/** */new RealTile(null, new Path(false,true,false,true),null), /** */null, /** */new RealTile(null, new Path(false,true,true,true),null), /** */null, /** */new RealTile(null, new Path(false,true,true,true),null), /** */null, /** */new RealTile(null, new Path(false,true,true,false),null)},                                                                   
+		   {/** */null, /** */null, /** */null, /** */null, /** */null, /** */null, /** */null},
+		   {/** */new RealTile(null, new Path(true,true,false,true),null), /** */null, /** */new RealTile(new Pawn("r",2,2), new Path(true,true,false,true),null), /** */null, /** */new RealTile(new Pawn("y",4,2), new Path(false,true,true,true),null), /** */null, /** */new RealTile(null, new Path(true,true,true,false),null)},
+		   {/** */null, /** */null, /** */null, /** */null, /** */null, /** */null, /** */null},
+		   {/** */new RealTile(null, new Path(true,true,false,true),null), /** */null, /** */new RealTile(new Pawn("w",2,4), new Path(true,false,true,true),null), /** */null, /** */new RealTile(new Pawn("b",4,4), new Path(true,true,true,false),null), /** */null, /** */new RealTile(null, new Path(true,true,true,false),null)},
+		   {/** */null, /** */null, /** */null, /** */null, /** */null, /** */null, /** */null},
+		   {/** */new RealTile(null, new Path(true,false,false,true),null), /** */null, /** */new RealTile(null, new Path(true,false,true,true),null), /** */null, /** */new RealTile(null, new Path(true,false,true,true),null), /** */null, /** */new RealTile(null, new Path(true,false,true,false),null)},
+};
 	private int _activePawnX;
 	private int _activePawnY;
 	
 	public Board() {
 		_pColl = new PathCollections();
-		initializeBoard(_board);
+	//	initializeBoard(_board);
 		populateBoard();
 		placeIngredients();
 	}
@@ -39,10 +47,10 @@ public class Board {
 		
 	public void populateBoard() {
 		//ArrayList<Path> pList = _pColl.getList();
-		for(int col=0; col<COLS; col++) {
-			for(int row=0; row<ROWS; row++) {
-				if(_board[col][row] == null) {
-					_board[row][col] = new RealTile(null, _pColl.getList().get(0),null);
+		for(int y=0; y<COLS; y++) {
+			for(int x=0; x<ROWS; x++) {
+				if(_board[x][y] == null) {
+					_board[x][y] = new RealTile(null, _pColl.getList().get(0),null);
 					_pColl.getList().remove(0); //hope this works if not cry, it should use the first value the remove it, shifting the rest
 			} 
 		  }
@@ -58,7 +66,7 @@ public class Board {
 		Collections.shuffle(list);
 		for(int y=1; y<6; y++) {
 			for(int x=1; x<6; x++) {
-				_board[x][y].getIngredient().setNum(list.get(0));
+				_board[x][y].setIngredient(new Ingredient(list.get(0)));
 				list.remove(0);
 			}
 		}
