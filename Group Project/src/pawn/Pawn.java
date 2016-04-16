@@ -23,4 +23,8 @@ public class Pawn {
 	public int getY() {
 		return _y;
 	}
+	
+	public void addPawn(Pawn p) {
+		_color += p;
+	}
 }
